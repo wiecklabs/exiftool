@@ -15,8 +15,18 @@
 	<packaging>jar</packaging>
 
 	<properties>
+		<!-- Settings -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.6</java.version>
+		<java.test.version>1.8</java.test.version>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.testTarget>${java.test.version}</maven.compiler.testTarget>
+		<maven.compiler.testSource>${java.test.version}</maven.compiler.testSource>
+
 		<!-- Plugins -->
 		<maven-surefire-plugin.version>2.19</maven-surefire-plugin.version>
+		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
 
 		<!-- Project dependencies -->
 		<slf4j.version>1.6.1</slf4j.version>
@@ -84,6 +94,19 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+					<testSource>${maven.compiler.testSource}</testSource>
+					<testTarget>${maven.compiler.testTarget}</testTarget>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
